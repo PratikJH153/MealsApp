@@ -22,14 +22,15 @@ class CategoryMealsPage extends StatelessWidget {
     final categoryMeals =
         DUMMY_MEALS.where((meal) => meal.categories.contains(catID)).toList();
     return Scaffold(
-        appBar: AppBar(
-          title: Text(catTitle),
-        ),
-        body: ListView.builder(
-          itemBuilder: (ctx, index) {
-            return MealItem(meal: categoryMeals[index]);
-          },
-          itemCount: categoryMeals.length,
-        ));
+      appBar: AppBar(
+        title: Text(catTitle),
+      ),
+      body: ListView.builder(
+        itemBuilder: (ctx, index) {
+          return MealItem(meal: categoryMeals[index]);
+        },
+        itemCount: categoryMeals.length,
+      ),
+    );
   }
 }
