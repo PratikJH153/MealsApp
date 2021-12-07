@@ -4,8 +4,10 @@ import 'package:mealsapp/pages/meal_details_page.dart';
 
 class MealItem extends StatelessWidget {
   final Meal meal;
+  final Function removeMeal;
   const MealItem({
     required this.meal,
+    required this.removeMeal,
     Key? key,
   }) : super(key: key);
 
@@ -41,10 +43,12 @@ class MealItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => Navigator.of(context).pushNamed(
-        MealDetailsPage.routeName,
-        arguments: meal.id,
-      ),
+      onTap: () => Navigator.of(context)
+          .pushNamed(
+            MealDetailsPage.routeName,
+            arguments: meal.id,
+          )
+          .then((id) => removeMeal(id)),
       child: Card(
         margin: const EdgeInsets.all(10),
         shape: RoundedRectangleBorder(

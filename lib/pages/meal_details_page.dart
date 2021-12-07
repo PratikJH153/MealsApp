@@ -40,6 +40,15 @@ class MealDetailsPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(_selectedMeal.title),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context).pop(mealID);
+        },
+        child: const Icon(
+          Icons.delete,
+          color: Colors.white,
+        ),
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
