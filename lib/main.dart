@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:mealsapp/pages/meal_details_page.dart';
+import './pages/category_meals_page.dart';
+
+import './pages/categories_page.dart';
 
 void main() => runApp(const MyApp());
 
@@ -11,22 +15,39 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "MealsApp",
       theme: ThemeData(
+        primarySwatch: Colors.pink,
+        canvasColor: const Color.fromRGBO(255, 254, 229, 1),
+        fontFamily: "Raleway",
+        textTheme: ThemeData.light().textTheme.copyWith(
+              bodyText1: const TextStyle(
+                color: Color.fromRGBO(20, 51, 51, 1),
+              ),
+              bodyText2: const TextStyle(
+                color: Color.fromRGBO(20, 51, 51, 1),
+              ),
+              headline6: const TextStyle(
+                fontSize: 22,
+                fontFamily: "RobotoCondensed",
+                fontWeight: FontWeight.bold,
+              ),
+            ),
         colorScheme: ColorScheme.fromSwatch(
-          primarySwatch: Colors.blue,
+          primarySwatch: Colors.pink,
+          accentColor: Colors.amber,
         ),
       ),
-      home: const MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Text("Meals"),
+      initialRoute: CategoriesPage.routeName,
+      routes: {
+        CategoriesPage.routeName: (ctx) => const CategoriesPage(),
+        CategoryMealsPage.routeName: (ctx) => const CategoryMealsPage(),
+        MealDetailsPage.routeName: (ctx) => const MealDetailsPage(),
+      },
+      // onGenerateRoute: (settings) {
+      //   return MaterialPageRoute(builder: (_) => const CategoriesPage());
+      // },
+      // onUnknownRoute: (settings) {
+      //   return MaterialPageRoute(builder: (_) => const CategoriesPage());
+      // },
     );
   }
 }
